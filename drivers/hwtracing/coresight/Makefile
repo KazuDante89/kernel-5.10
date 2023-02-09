@@ -2,6 +2,12 @@
 #
 # Makefile for CoreSight drivers.
 #
+
+# Always use -O2 optimisations for CoreSight when LTO is enabled
+ifdef CONFIG_LTO
+KBUILD_CFLAGS += -O2
+endif
+
 obj-$(CONFIG_CORESIGHT) += coresight.o
 coresight-y := coresight-core.o  coresight-etm-perf.o coresight-platform.o \
 		coresight-sysfs.o
